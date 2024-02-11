@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DeveloperToolsToolWindowSettingsV1">
-    <developerToolsConfigurations />
-    <expandedGroupNodeIds />
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="url-encoding-encoder-decoder">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="url-encoding-encoder-decoder" id="6ad106b6-0ae0-43ca-9099-6ca3d75c3fd4" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|fdsfdsfd./fe" />
+          <property key="targetText" type="INPUT" value="kotlin.String|fdsfdsfd.%2Ffe" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
   </component>
 </project>
