@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="chap02-05" />
         <module name="chap02" />
         <module name="chap02-1" />
       </profile>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chap02" options="-parameters" />
       <module name="chap02-03" options="-parameters" />
+      <module name="chap02-05" options="-parameters" />
       <module name="chap02-1" options="-parameters" />
     </option>
   </component>
