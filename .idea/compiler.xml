@@ -10,10 +10,14 @@
         <module name="chap02-1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chap02-03" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chap02" options="-parameters" />
+      <module name="chap02-03" options="-parameters" />
       <module name="chap02-1" options="-parameters" />
     </option>
   </component>

@@ -6,7 +6,13 @@
       <list>
         <option value="$PROJECT_DIR$/chap02/pom.xml" />
         <option value="$PROJECT_DIR$/chap02-1/pom.xml" />
+        <option value="$PROJECT_DIR$/chap02-03/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/chap02-03/pom.xml" />
+      </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
