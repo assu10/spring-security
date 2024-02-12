@@ -9,15 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.assu.study</groupId>
-    <artifactId>chap02</artifactId>
+    <artifactId>chap02-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>chap02</name>
-    <description>Demo project for Spring Boot</description>
-
+    <name>chap02-1</name>
+    <description>chap02-1</description>
     <properties>
         <java.version>17</java.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
