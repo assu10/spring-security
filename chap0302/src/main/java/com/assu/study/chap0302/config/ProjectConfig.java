@@ -18,12 +18,12 @@ public class ProjectConfig {
 //        .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
 //        .build();
 //  }
-
-  private final DataSource dataSource;
-
-  public ProjectConfig(DataSource dataSource) {
-    this.dataSource = dataSource;
-  }
+//
+//  private final DataSource dataSource;
+//
+//  public ProjectConfig(DataSource dataSource) {
+//    this.dataSource = dataSource;
+//  }
 
   @Bean
   public UserDetailsService userDetailsService(DataSource dataSource) {
