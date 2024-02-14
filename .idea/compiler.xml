@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chap02" />
         <module name="chap02-1" />
+        <module name="chap0301" />
         <module name="chap02-05" />
         <module name="chap02-06" />
       </profile>
@@ -23,6 +24,7 @@
       <module name="chap02-05" options="-parameters" />
       <module name="chap02-06" options="-parameters" />
       <module name="chap02-1" options="-parameters" />
+      <module name="chap0301" options="-parameters" />
     </option>
   </component>
 </project>
