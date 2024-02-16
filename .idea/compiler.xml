@@ -20,6 +20,7 @@
         <module name="chap0505" />
         <module name="chap0504" />
         <module name="chap0702" />
+        <module name="chap0801" />
         <module name="chap0701" />
       </profile>
     </annotationProcessing>
@@ -44,6 +45,7 @@
       <module name="chap0601" options="-parameters" />
       <module name="chap0701" options="-parameters" />
       <module name="chap0702" options="-parameters" />
+      <module name="chap0801" options="-parameters" />
     </option>
   </component>
 </project>
