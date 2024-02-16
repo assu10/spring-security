@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @RequiredArgsConstructor
@@ -14,15 +14,21 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ProjectConfig {
 
   // PasswordEncoder 선언
-  @Bean
-  public BCryptPasswordEncoder bcryptPasswordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+//  @Bean
+//  public BCryptPasswordEncoder bcryptPasswordEncoder() {
+//    return new BCryptPasswordEncoder();
+//  }
+//
+//  // PasswordEncoder 선언
+//  @Bean
+//  public SCryptPasswordEncoder sCryptPasswordEncoder() {
+//    return new SCryptPasswordEncoder(16384, 8, 1, 32, 64);
+//  }
 
-  // PasswordEncoder 선언
+  // delegatingPasswordEncoding 적용 시
   @Bean
-  public SCryptPasswordEncoder sCryptPasswordEncoder() {
-    return new SCryptPasswordEncoder(16384, 8, 1, 32, 64);
+  public PasswordEncoder passwordEncoder() {
+    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
 
   // 양식 기반 인증 방식

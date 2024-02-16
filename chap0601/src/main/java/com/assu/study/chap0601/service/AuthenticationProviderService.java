@@ -7,9 +7,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +15,10 @@ import org.springframework.stereotype.Service;
 public class AuthenticationProviderService implements AuthenticationProvider {
 
   private final JpaUserDetailsService jpaUserDetailsService;
-  private final BCryptPasswordEncoder bCryptPasswordEncoder;
-  private final SCryptPasswordEncoder sCryptPasswordEncoder;
+  // delegatingPasswordEncoding 적용 시
+//  private final BCryptPasswordEncoder bCryptPasswordEncoder;
+//  private final SCryptPasswordEncoder sCryptPasswordEncoder;
+  private final PasswordEncoder passwordEncoder;
 
   /**
    * 인증 논리 구현
@@ -36,12 +36,16 @@ public class AuthenticationProviderService implements AuthenticationProvider {
 
     Authentication result;
     try {
-      result = switch (user.getUser().getAlgorithm()) {
-        case BCRYPT -> checkPassword(user, password, bCryptPasswordEncoder);
-        case SCRYPT -> checkPassword(user, password, sCryptPasswordEncoder);
-      };
+      // delegatingPasswordEncoding 적용 시
+      result = checkPassword(user, password, passwordEncoder, user.getUser().getAlgorithm().toString());
+
+//      result = switch (user.getUser().getAlgorithm()) {
+//        case BCRYPT -> checkPassword(user, password, bCryptPasswordEncoder);
+//        case SCRYPT -> checkPassword(user, password, sCryptPasswordEncoder);
+//      };
     } catch (Exception e) {
-      throw new BadCredentialsException("Bad credentials...! (authenticate())");
+      e.printStackTrace();
+      throw new BadCredentialsException("Bad credentials...! (authenticate())", e);
     }
 
     return result;
@@ -58,9 +62,12 @@ public class AuthenticationProviderService implements AuthenticationProvider {
    * 매개 변수로 전달된 PasswordEncoder 를 사용하여 사용자 입력으로 받은 원시 암호가 DB 의 인코딩과 일치하는지 검증 후
    * 암호가 올바르면 Authentication 계약의 구현을 인스턴스로 반환
    */
-  private Authentication checkPassword(CustomUserDetails user, String rawPassword, PasswordEncoder encoder) {
+  private Authentication checkPassword(CustomUserDetails user, String rawPassword, PasswordEncoder encoder, String algorithm) {
+    // delegatingPasswordEncoding 적용 시
+    String userPassword = "{" + algorithm.toLowerCase() + "}" + user.getPassword();
+
     // 인코딩된 문자열(암호)이 원시 암호(rawPassword) 와 일치하는지 확인
-    if (encoder.matches(rawPassword, user.getPassword())) {
+    if (encoder.matches(rawPassword, userPassword)) {
       // 암호가 일치하면 AuthenticationProvider 는
       // 필요한 세부 정보가 담긴 Authentication 계약의 구현을 '인증됨' 으로 표시한 후 반환함
       return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
