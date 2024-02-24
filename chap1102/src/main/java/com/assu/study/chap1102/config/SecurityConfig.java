@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 @Configuration
 public class SecurityConfig {
-  // filter, AuthenticationProvider 주입
+  // filter 주입
   private final InitialAuthenticationFilter initialAuthenticationFilter;
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
 

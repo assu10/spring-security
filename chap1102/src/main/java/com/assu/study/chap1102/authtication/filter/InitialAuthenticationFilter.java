@@ -47,6 +47,9 @@ public class InitialAuthenticationFilter extends OncePerRequestFilter {
       Authentication authentication = new UsernamePasswordAuthentication(username, password);
 
       // 따라서 OTP 가 없으면 UsernamePasswordAuthentication 인스턴스를 만든 후 책임을 AuthenticationManager 에게 전달하여 첫 번째 인증단계 호출
+      // AuthenticationManager 는 해당하는 AuthenticationProvider 를 찾음
+      // UsernamePasswordAuthenticationProvider.supports() 가 UsernamePasswordAuthentication 형식을 받는다고
+      // 선언하였으므로 UsernamePasswordAuthenticationProvider 로 인증 책임을 위임함
       authenticationManager.authenticate(authentication);
     } else {
       // 헤더에 OTP 가 있으면 사용자 이름/OTP 인증 단계라고 가정
@@ -71,10 +74,6 @@ public class InitialAuthenticationFilter extends OncePerRequestFilter {
       // 토큰을 HTTP 응답의 권한 부여 헤더에 추가
       response.setHeader("Authorization", jwt);
     }
-
-    // AuthenticationManager 는 해당하는 AuthenticationProvider 를 찾음
-    // UsernamePasswordAuthenticationProvider.supports() 가 UsernamePasswordAuthentication 형식을 받는다고
-    // 선언하였으므로 UsernamePasswordAuthenticationProvider 로 인증 책임을 위임함
   }
 
   /**

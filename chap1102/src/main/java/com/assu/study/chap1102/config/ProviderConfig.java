@@ -6,17 +6,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+
+import java.util.Arrays;
 
 @Configuration
 public class ProviderConfig {
 
-  private final AuthenticationConfiguration authenticationConfiguration;
+  // AuthenticationProvider 주입
   private final UsernamePasswordAuthenticationProvider usernamePasswordAuthenticationProvider;
   private final OtpAuthenticationProvider otpAuthenticationProvider;
 
-  public ProviderConfig(AuthenticationConfiguration authenticationConfiguration, UsernamePasswordAuthenticationProvider usernamePasswordAuthenticationProvider, OtpAuthenticationProvider otpAuthenticationProvider) {
-    this.authenticationConfiguration = authenticationConfiguration;
+  public ProviderConfig(UsernamePasswordAuthenticationProvider usernamePasswordAuthenticationProvider, OtpAuthenticationProvider otpAuthenticationProvider) {
     this.usernamePasswordAuthenticationProvider = usernamePasswordAuthenticationProvider;
     this.otpAuthenticationProvider = otpAuthenticationProvider;
   }
@@ -26,22 +26,6 @@ public class ProviderConfig {
    */
   @Bean
   public AuthenticationManager authenticationManager() throws Exception {
-    ProviderManager providerManager = (ProviderManager) authenticationConfiguration.getAuthenticationManager();
-    providerManager.getProviders().add(this.usernamePasswordAuthenticationProvider);
-    return authenticationConfiguration.getAuthenticationManager();
-
-//    ProviderManager providerManager = (ProviderManager) authenticationConfiguration.getAuthenticationManager();
-//    providerManager.getProviders().add(this.otpAuthenticationProvider);
-//    providerManager.getProviders().add(this.usernamePasswordAuthenticationProvider);
-//    //.addAll(List.of(this.usernamePasswordAuthenticationProvider, this.otpAuthenticationProvider));
-//    return authenticationConfiguration.getAuthenticationManager();
+    return new ProviderManager(Arrays.asList(this.usernamePasswordAuthenticationProvider, this.otpAuthenticationProvider));
   }
 }
-
-
-//@Bean
-//public AuthenticationManager authenticationManager() throws Exception {
-//  ProviderManager providerManager = (ProviderManager) authenticationConfiguration.getAuthenticationManager();
-//  providerManager.getProviders().add(this.authenticationProviderService);
-//  return authenticationConfiguration.getAuthenticationManager();
-//}
