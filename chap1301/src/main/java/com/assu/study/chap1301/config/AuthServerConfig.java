@@ -4,14 +4,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
 /**
  * 인증 구성 클래스
  */
 @Configuration
-@EnableAuthorizationServer  // 스프링 부트에 OAuth 2 권한 부여 서버에 관한 구성을 활성화하도록 지시
+//@EnableAuthorizationServer  // 스프링 부트에 OAuth 2 권한 부여 서버에 관한 구성을 활성화하도록 지시
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
   private final AuthenticationManager authenticationManager;

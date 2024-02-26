@@ -3,7 +3,10 @@ package com.assu.study.chap1301.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,6 +44,16 @@ public class WebSecurityConfig {
   // AuthenticationManager 를 스프링 컨텍스트에 빈으로 노출시킨 후 AuthServerConfig 에서 사용
   @Bean
   public AuthenticationManager authenticationManager() {
-    return new ProviderManager();
+    return new ProviderManager(new AuthenticationProvider() {
+      @Override
+      public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        return null;
+      }
+
+      @Override
+      public boolean supports(Class<?> authentication) {
+        return false;
+      }
+    });
   }
 }
