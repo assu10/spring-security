@@ -19,6 +19,7 @@
         <module name="chap1101" />
         <module name="chap1001" />
         <module name="chap02-1" />
+        <module name="chap1501-rs-mig" />
         <module name="chap0502" />
         <module name="chap0601" />
         <module name="chap0501" />
@@ -38,6 +39,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chap02-03" target="17" />
+      <module name="chap1501-as" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -70,6 +72,7 @@
       <module name="chap1102" options="-parameters" />
       <module name="chap1201" options="-parameters" />
       <module name="chap1301" options="-parameters" />
+      <module name="chap1501-rs-mig" options="-parameters" />
     </option>
   </component>
 </project>
