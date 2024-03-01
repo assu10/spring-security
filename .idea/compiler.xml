@@ -23,6 +23,7 @@
         <module name="chap02-1" />
         <module name="chap1601" />
         <module name="chap1605" />
+        <module name="chap1704" />
         <module name="chap1604" />
         <module name="chap1703" />
         <module name="chap1603" />
@@ -89,6 +90,7 @@
       <module name="chap1701" options="-parameters" />
       <module name="chap1702" options="-parameters" />
       <module name="chap1703" options="-parameters" />
+      <module name="chap1704" options="-parameters" />
     </option>
   </component>
 </project>
