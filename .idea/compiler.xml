@@ -25,6 +25,7 @@
         <module name="chap1605" />
         <module name="chap1604" />
         <module name="chap1603" />
+        <module name="chap1702" />
         <module name="chap1501-rs-mig" />
         <module name="chap0502" />
         <module name="chap0601" />
@@ -85,6 +86,7 @@
       <module name="chap1604" options="-parameters" />
       <module name="chap1605" options="-parameters" />
       <module name="chap1701" options="-parameters" />
+      <module name="chap1702" options="-parameters" />
     </option>
   </component>
 </project>
